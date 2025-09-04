@@ -1,10 +1,18 @@
 def suma(N1, N2):
     operacion = N1 + N2
-    return "La suma de los dos numeros es: " + str(operacion)
+    return "La suma de los dos numeros es: " + str(operacion) 
+
+def resta (N1, N2):
+    operacion =N1-N2
+    return "El resultado de la resta es: "+ str(operacion)
 
 def multiplicacion (N1, N2):
     operacion = N1 * N2
     return "El resutado de la multiplicacion es: " + str(operacion)
+
+def division (N1, N2):
+    operacion =N1/N2
+    return "El resultado de la division es: "+ str(operacion)
 
 def Potencia (N1, N2):
     operacion = N1 ** N2
@@ -15,7 +23,7 @@ def raiz (N1, N2):
     return "El resultado de la raiz es: " + str(operacion)
 
 print("Menu de calculadora")
-print("1=Suma 2=Resta 3=Multiplicacion 4=Division 5=Exponente 6=Raiz cuadrada " )
+print("1=Suma 2=Resta 3=Multiplicacion 4=Division 5=Exponente 6=Raiz " )
 
 ope = int (input("Digite el numero de la operacion: "))
 
@@ -25,12 +33,18 @@ Num2 = float(input("Digite segundo numero: "))
 if 1 == ope:
     sumafinal= suma(Num1, Num2)
     print(sumafinal)
+elif ope == 2: 
+  restafinal = resta (Num1,Num2 )
+  print (restafinal)
 elif 3 == ope: 
     multiplicacionfinal = multiplicacion (Num1, Num2)
     print(multiplicacionfinal)
 elif 5 == ope:
     Potenciafinal = Potencia (Num1, Num2)
     print(Potenciafinal)
+elif ope == 4:
+   divisionfinal = division (Num1, Num2)
+   print(divisionfinal)
 elif 6 == ope:
     raizfinal = raiz(Num1, Num2)
     print(raizfinal)
