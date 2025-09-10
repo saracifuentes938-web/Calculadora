@@ -1,0 +1,42 @@
+Analisis 
+Pedir Hemoglobina, Genero 1=hombre, 2=Mujer
+Pedir cantidad pacientes
+Mostrar la cantidad de hombres con hemoglobina baja, normal, alta y Mujeres baja, normal y alta
+
+INICIO
+Hemog= Float
+Genero= Int, CanP= Int, HB= Int, HN= Int, HA= Int, MB= Int, MN= Int, MA=Int
+HB= 0, HN= 0, HA= 0, MB= 0, MN= 0, MA= 0
+for i=0 hasta CanP
+    Lea "Digite su hemoglobina en g/dL: ";Hemog
+    Lea "Digite su genero 1=Hombre, 2=Mujer: ";Genero
+    if Genero == 1
+        if Hemog < 12.2
+            HB = HB + 1
+        elif Hemog >= 12.2 and Hemog <= 16.6
+            HN = HN + 1
+        else
+            HA = HA + 1
+    elif Genero == 2
+        if Hemog < 12.6
+            MB = MB + 1
+        elif Hemog >= 12.6 and Hemog <= 15
+            MN = MN + 1
+        else
+            MA = MA + 1
+    else
+        Escriba "No es posible generar la alerta"
+fin for
+Escriba HB + HA + HN + MB + MA + MN
+
+PRUEBA DE ESCRITORIO
+CanP = 6
+Hemog: 5 - 10 - 17 - 14 - 16 - 14
+Genero: 0 - 1 - 2 - 2 - 1 - 1
+HB: 0 - 1
+HN: 0 - 1 - 2
+HA: 0 
+MB: 0 
+MN: 0 - 1
+MA: 0 - 1
+Mostrar pantalla: No es posible generar alerta - 1 0 2 0 1 1

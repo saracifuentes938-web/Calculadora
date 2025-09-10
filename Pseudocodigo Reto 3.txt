@@ -1,0 +1,35 @@
+Analisis
+Pedir Hemoglobina, Genero 1=hombre, 2=Mujer
+Sacar promedio de hemoglobina en mujeres y hombres y mostrando si el promedio es alto, bajo o medio
+Mostrar cuantos hombres y mujeres estan por encima del promedio, bajo del promedio e igual a l promedio
+Pedir cantidad de pacientes
+
+INICIO
+Genero= Int, CanP= Int, PromMuj= Float, PromHom= Float, Tph= string, Tpm= string, H_EP= Int, H_DP= Int, H_IP= Int, M_EP= Int, M_DP= Int, M_IP= Int
+PromHom= 0, PromMuj= 0, CantH= 0, CantM= 0, H_EP= 0, H_DP= 0, H_IP= 0, M_EP= 0, M_DP= 0, M_IP= 0
+DatH= Vector[]
+DatM= Vector[]
+for i=0 hasta CanP
+    Lea "Digite su hemoglobina en g/dL: ";Hemog
+    Lea "Digite su genero 1=Hombre, 2=Mujer: ";Genero
+    if Genero == 1
+        PromHom = PromHom + Hemog
+        CantH = CantH + 1
+        DatH[i] = Hemog
+    elif Genero == 2
+        PromMuj = PromMuj + Hemog
+        CantM = CantM + 1
+        DatM[i]= Hemog
+    else
+        Escriba "No es posible generar la alerta"
+Fin para
+PromHom = PromHom / CantP
+PromMuj = PromMuj / CantH
+if PromHom < 12.2
+    Tpm = "Bajo"
+elif PromHom >= 12.2 and PromHom <= 16.2
+    Tpm = "Normal"
+else
+    Tpm = "Alto"
+fin if
+if 
