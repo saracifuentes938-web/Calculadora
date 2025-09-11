@@ -1,35 +1,113 @@
 Analisis
 Pedir Hemoglobina, Genero 1=hombre, 2=Mujer
 Sacar promedio de hemoglobina en mujeres y hombres y mostrando si el promedio es alto, bajo o medio
-Mostrar cuantos hombres y mujeres estan por encima del promedio, bajo del promedio e igual a l promedio
+Mostrar cuantos hombres y mujeres estan por encima del promedio, bajo del promedio e igual al promedio
 Pedir cantidad de pacientes
 
 INICIO
-Genero= Int, CanP= Int, PromMuj= Float, PromHom= Float, Tph= string, Tpm= string, H_EP= Int, H_DP= Int, H_IP= Int, M_EP= Int, M_DP= Int, M_IP= Int
-PromHom= 0, PromMuj= 0, CantH= 0, CantM= 0, H_EP= 0, H_DP= 0, H_IP= 0, M_EP= 0, M_DP= 0, M_IP= 0
-DatH= Vector[]
-DatM= Vector[]
-for i=0 hasta CanP
-    Lea "Digite su hemoglobina en g/dL: ";Hemog
-    Lea "Digite su genero 1=Hombre, 2=Mujer: ";Genero
+Genero, CanPacientes, NumeroH, NumeroM, SuperiorH, IgualH, InferiorH, SuperiorM, IgualM, InferiorM = int
+Hemoglobina, SumaHombre, SumaMujer, PromedioH, PromedioM, = float
+AlertaH, AlertaM = string
+
+Lea "Digite el numero de pacientes: ";CanPacientes
+
+HemoglobinaH = Vector[CanPacientes]
+HemoglobinaM = Vector[CanPacientes]
+
+NumeroH = 0, NumeroM = 0
+
+for i = 0 hasta CanPacientes
+    Lea "Digite su hemoglobina en g/dL: "; Hemoglobina
+    Lea "Digita su genero 1=Hombre, 2=Mujer: "; Genero
+
     if Genero == 1
-        PromHom = PromHom + Hemog
-        CantH = CantH + 1
-        DatH[i] = Hemog
+        HemoglobinaH[NumeroH] = Hemoglobina
+        NumeroH = NumeroH + 1
+        SumaHombre = SumaHombre + Hemoglobina
     elif Genero == 2
-        PromMuj = PromMuj + Hemog
-        CantM = CantM + 1
-        DatM[i]= Hemog
+        HemoglobinaM[NumeroM] = Hemoglobina
+        NumeroM = NumeroM + 1
+        SumaMujer = SumaMujer + Hemoglobina
     else
-        Escriba "No es posible generar la alerta"
-Fin para
-PromHom = PromHom / CantP
-PromMuj = PromMuj / CantH
-if PromHom < 12.2
-    Tpm = "Bajo"
-elif PromHom >= 12.2 and PromHom <= 16.2
-    Tpm = "Normal"
+        Escriba "Ingrese un genero valido"
+    fin if 
+fin for
+
+if NumeroH > 0
+    PromedioH = SumaHombre / NumeroH
 else
-    Tpm = "Alto"
+    PromedioH = 0
 fin if
-if 
+
+if NumeroM > 0
+    PromedioM = SumaMujer / NumeroM
+else
+    PromedioM = 0
+fin if
+
+if PromedioH < 12.2 
+    AlertaH = "Baja"
+elif PromedioH >= 12.2 and PromedioH <= 16.6
+    AlertaH = "Normal"
+else
+    AlertaH = "Alta"
+fin if
+
+if PromedioM < 12.6 
+    AlertaM = "Baja"
+elif PromedioM >= 12,6 and PromedioM <= 15
+    AlertaM = "Normal"
+else 
+    AlertaM = "Alta"
+fin if
+
+SuperiorH, IgualH, InferiorH = 0
+for i = 0 hasta NumeroH
+    if HemoglobinaH[i] > PromedioH
+        SuperiorH = SuperiorH + 1
+    elif redondear(HemoglobinaH[i], 2) == redondear(PromedioH, 2)
+        IgualH = IgualH + 1
+    else 
+        InferiorH = InferiorH + 1
+    fin if
+fin for   
+
+SuperiorM, IgualM, InferiorM = 0
+for i = 0 hasta NumeroM
+    if HemoglobinaM[i] > PromedioM
+        SuperiorM = SuperiorM + 1
+    elif redondear(HemoglobinaM, 2) == redondear(PromedioM, 2)
+        IgualM = IgualM + 1
+    else 
+        InferiorM = InferiorM + 1
+    fin if
+fin for 
+
+Escriba redondear(PromedioH, 2), AlertaH;
+Escriba redondear(PromedioM, 2), AlertaM;
+Escriba SuperiorH, SuperiorM;
+Escriba InferiorH, InferiorM;
+Escriba IgualH, IgualM;
+
+PRUEBA DE ESCRITORIO
+
+CanP: 6
+Hemoglobina: 5 - 10 - 17 - 14 - 16 - 14
+Genero: 0 - 1 - 2 - 2 - 1 - 1
+HemoglobinaH: 0= 10, 1= 16, 2= 14
+HemoglobinaM: 0= 17, 1= 14
+NumeroH: 0 - 1 - 2 - 3
+NumeroM: 0 - 1 - 2
+SumaHombre: 10 - 26 - 40
+SumaMujer: 17 - 31 
+PromedioH: (40 / 3) = 13.33
+PromedioM: (31 / 2) = 15.50
+AlertaH: Normal 
+AlertaM: Alta
+SuperiorH: 0 - 1 - 2
+IgualH: 0
+InferiorH: 0 - 1
+SuperiorM: 0 - 1
+IgualM: 0
+InferiorM: 0 - 1
+Mostrar en pantalla: Ingrese un genero valido - 13.33 Normal, 15.50 Alta, 2, 1, 1, 1, 0, 0 
